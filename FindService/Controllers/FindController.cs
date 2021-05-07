@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FindService.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using TextService.Client;
-using TextService.Entities;
+using TextService.Entities.Models;
 
 namespace FindService.Controllers
 {
@@ -11,19 +12,29 @@ namespace FindService.Controllers
     [ApiController]
     public class FindController : ControllerBase
     {
-        private readonly ITextClient _textClient;
+        private readonly IFindService _findService;
         private readonly ILogger<FindController> _logger;
 
-        public FindController(ITextClient textClient, ILogger<FindController> logger)
+        public FindController(IFindService findService, ILogger<FindController> logger)
         {
-            _textClient = textClient;
+            _findService = findService;
             _logger = logger;
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<TextFile>> GetById(Guid id)
+        [HttpGet("find/{word}")]
+        public async Task<IEnumerable<TextModel>> FindWord(string word)
         {
-            return await _textClient.GetById(id);
+            var result = await _findService.FindWordAsync(word);
+            return result;
         }
+
+        [HttpGet("find/{id}/{words}")]
+        public async Task<IEnumerable<string>> FindWords(Guid id, string[] words)
+        {
+            var result = await _findService.FindWordsAsync(id, words);
+            return result;
+        }
+
+
     }
 }

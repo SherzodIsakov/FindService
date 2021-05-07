@@ -1,3 +1,4 @@
+using FindService.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +25,7 @@ namespace FindService
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "FindService", Version = "v1" }); });
 
             services.AddTextServiceClient(Configuration);
+            services.AddTransient<IFindService, FindService.Services.Services.FindService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
