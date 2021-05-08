@@ -26,6 +26,8 @@ namespace FindService
 
             services.AddTextServiceClient(Configuration);
             services.AddTransient<IFindService, FindService.Services.Services.FindService>();
+
+          
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
