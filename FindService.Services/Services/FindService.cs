@@ -14,13 +14,7 @@ namespace FindService.Services.Services
         public FindService(ITextClient textClient)
         {
             _textClient = textClient;
-        }
-
-        /// <summary>
-        /// Поиск слова во всех файлах
-        /// </summary>
-        /// <param name="word"></param>
-        /// <returns></returns>
+        }       
         public async Task<IEnumerable<TextModel>> FindWordAsync(string word)
         {
             if (word != null)
@@ -34,14 +28,7 @@ namespace FindService.Services.Services
             }
 
             return null;
-        }
-
-        /// <summary>
-        /// Поиск слов в указанном файле
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="words"></param>
-        /// <returns></returns>
+        }        
         public async Task<IEnumerable<string>> FindWordsAsync(Guid id, string[] words)
         {
             if (words != null)
@@ -57,16 +44,10 @@ namespace FindService.Services.Services
 
             return null;
         }
-
-        /// <summary>
-        /// Получаем все файлы
-        /// </summary>
-        /// <returns></returns>
         public async Task<IEnumerable<TextModel>> GetAllFilesAsync()
         {
             var getText = await _textClient.GetAll();            
             return getText;
         }
-
     }
 }

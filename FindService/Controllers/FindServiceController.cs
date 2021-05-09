@@ -10,12 +10,12 @@ namespace FindService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FindController : ControllerBase
+    public class FindServiceController : ControllerBase
     {
         private readonly IFindService _findService;
-        private readonly ILogger<FindController> _logger;
+        private readonly ILogger<FindServiceController> _logger;
 
-        public FindController(IFindService findService, ILogger<FindController> logger)
+        public FindServiceController(IFindService findService, ILogger<FindServiceController> logger)
         {
             _findService = findService;
             _logger = logger;
@@ -35,13 +35,11 @@ namespace FindService.Controllers
             return result;
         }
 
-
         [HttpGet("find")]
         public async Task<IEnumerable<TextModel>> GetAllTexts()
         {
             var result = await _findService.GetAllFilesAsync();
             return result;
         }
-
     }
 }
