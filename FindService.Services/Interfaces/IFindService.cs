@@ -11,5 +11,6 @@ namespace FindService.Services.Interfaces
     {
         Task<IEnumerable<TextModel>> FindWordAsync(string word);
         Task<IEnumerable<string>> FindWordsAsync(Guid id, string[] words);
+        Task<IEnumerable<TextModel>> GetAllFilesAsync();
     }
 }

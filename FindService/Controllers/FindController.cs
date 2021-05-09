@@ -36,5 +36,12 @@ namespace FindService.Controllers
         }
 
 
+        [HttpGet("find")]
+        public async Task<IEnumerable<TextModel>> GetAllTexts()
+        {
+            var result = await _findService.GetAllFilesAsync();
+            return result;
+        }
+
     }
 }

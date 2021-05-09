@@ -58,5 +58,15 @@ namespace FindService.Services.Services
             return null;
         }
 
+        /// <summary>
+        /// Получаем все файлы
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IEnumerable<TextModel>> GetAllFilesAsync()
+        {
+            var getText = await _textClient.GetAll();            
+            return getText;
+        }
+
     }
 }
