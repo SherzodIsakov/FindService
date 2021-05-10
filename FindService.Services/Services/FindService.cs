@@ -19,7 +19,7 @@ namespace FindService.Services.Services
         {
             if (word != null)
             {
-                var getText = await _textClient.GetAll();
+                var getText = await _textClient.GetAllTexts();
                 if (getText != null)
                 {
                     var selectText = getText.Where(x => x.Text.Contains(word));
@@ -46,8 +46,17 @@ namespace FindService.Services.Services
         }
         public async Task<IEnumerable<TextModel>> GetAllFilesAsync()
         {
-            var getText = await _textClient.GetAll();            
-            return getText;
+            try
+            {
+                var getText = await _textClient.GetAllTexts();
+                return getText;
+            }           
+
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }

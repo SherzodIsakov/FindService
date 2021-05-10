@@ -13,7 +13,7 @@ namespace FindService.Client
         /// </summary>
         /// <param name="word"></param>
         /// <returns></returns>
-        [Get("/text/find/{word}")]
+        [Get("/find/find/{word}")]
         Task<IEnumerable<TextModel>> FindWord(string word);
 
         /// <summary>
@@ -22,14 +22,14 @@ namespace FindService.Client
         /// <param name="id">Text id</param>
         /// <param name="words"></param>
         /// <returns></returns>
-        [Get("/text/find/{id}/{words}")]
+        [Get("/find/find/{id}/{words}")]
         Task<IEnumerable<string>> FindWords(Guid id, string[] words);
 
         /// <summary>
         /// Получаем все файлы
         /// </summary>
         /// <returns></returns>
-        [Get("/text/find/GetAllTexts")]
+        [Get("/find/find/GetAllTexts")]
         Task<IEnumerable<TextModel>> GetAllTexts();
     }
 }
