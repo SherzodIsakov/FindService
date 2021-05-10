@@ -11,11 +11,13 @@ namespace FindService.Client.Configuration
     {
         public static IServiceCollection AddFindServiceClient(this IServiceCollection services, IConfiguration configuration)
         {
-            services.TryAddTransient(_ => RestService.For<IFindClient>(new HttpClient()
-            {
-                BaseAddress = new Uri(configuration["ServiceUrls:FindService"])
-            }));
-
+            services.TryAddTransient(_ => RestService.For<IFindClient>(
+                new HttpClient(
+                new HttpClientHandler { ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true })
+                {
+                    BaseAddress = new Uri(configuration["ServiceUrls:FindService"])
+                }));
+            
             return services;
         }
     }

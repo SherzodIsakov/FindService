@@ -29,7 +29,7 @@ namespace FindService.Client
         /// Получаем все файлы
         /// </summary>
         /// <returns></returns>
-        [Get("/text/find")]
+        [Get("/text/find/GetAllTexts")]
         Task<IEnumerable<TextModel>> GetAllTexts();
     }
 }
