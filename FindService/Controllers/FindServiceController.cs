@@ -14,26 +14,23 @@ namespace FindService.Controllers
     [ApiController]
     public class FindServiceController : ControllerBase
     {
-        private readonly ITextClient _textClient;
-        //private readonly IFindService _findService;
+        private readonly IFindService _findService;
         private readonly ILogger<FindServiceController> _logger;
 
         public FindServiceController(
-            ITextClient textClient, 
-            /*IFindService findService,*/ 
+            IFindService findService,
             ILogger<FindServiceController> logger)
         {
-            _textClient = textClient;
-            //_findService = findService;
+            _findService = findService;
             _logger = logger;
         }
 
-        [HttpGet("textservice/{word}")]
+        [HttpGet("{word}")]
         public async Task<IEnumerable<TextModel>> FindWord(string word)
         {
             if (word != null)
             {
-                var getText = await _textClient.GetAllTexts();
+                var getText = await _findService.FindWordAsync(word);
                 if (getText != null)
                 {
                     var selectText = getText.Where(x => x.Text.Contains(word));
@@ -44,18 +41,13 @@ namespace FindService.Controllers
             return null;
         }
 
-        [HttpGet("textservice/{id}/{words}")]
+        [HttpGet("{id}/{words}")]
         public async Task<IEnumerable<string>> FindWords(Guid id, string[] words)
         {
             if (words != null)
             {
-                var getText = await _textClient.GetById(id);
-                if (getText != null)
-                {
-                    var textArray = getText.Text.Replace('\r', ' ').Replace('\n', ' ').Replace("  ", " ").Split(" ");
-                    var selectText = textArray.SelectMany(e => words.Where(x => x == e));
-                    return selectText;
-                }
+                var getText = await _findService.FindWordsAsync(id, words);
+                return getText;
             }
 
             return null;
@@ -66,7 +58,7 @@ namespace FindService.Controllers
         {
             try
             {
-                var getText = await _textClient.GetAllTexts();
+                var getText = await _findService.GetAllFilesAsync();
                 return getText;
             }
 
