@@ -15,7 +15,8 @@ namespace FindService.Client.Configuration
                 new HttpClient(
                 new HttpClientHandler { ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true })
                 {
-                    BaseAddress = new Uri(configuration["ServiceUrls:FindService"])
+                    BaseAddress = new Uri(configuration["ServiceUrls:FindService"]),
+                    Timeout = TimeSpan.FromMinutes(5)
                 }));
             
             return services;

@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FindService", "FindService\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextService.Client", "..\TextService\TextService.Client\TextService.Client.csproj", "{825E8718-7FC3-43FC-B64B-5C936F325B31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindService.Services", "FindService.Services\FindService.Services.csproj", "{7509B2B4-9BA0-4D21-8C21-4E450E72129A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FindService.Services", "FindService.Services\FindService.Services.csproj", "{7509B2B4-9BA0-4D21-8C21-4E450E72129A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextService.Entities", "..\TextService\TextService.Entities\TextService.Entities.csproj", "{EB3A6DF8-0297-4AA8-B13B-3074352B6D3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindService.Client", "FindService.Client\FindService.Client.csproj", "{2E963CF7-A5AB-4931-93E4-01AB42475607}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FindService.Client", "FindService.Client\FindService.Client.csproj", "{2E963CF7-A5AB-4931-93E4-01AB42475607}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryBase", "..\RepositoryBase\RepositoryBase\RepositoryBase.csproj", "{82FF290B-57D7-49FD-BF45-DFBDFE59C1B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{2E963CF7-A5AB-4931-93E4-01AB42475607}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E963CF7-A5AB-4931-93E4-01AB42475607}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E963CF7-A5AB-4931-93E4-01AB42475607}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82FF290B-57D7-49FD-BF45-DFBDFE59C1B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82FF290B-57D7-49FD-BF45-DFBDFE59C1B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82FF290B-57D7-49FD-BF45-DFBDFE59C1B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82FF290B-57D7-49FD-BF45-DFBDFE59C1B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
