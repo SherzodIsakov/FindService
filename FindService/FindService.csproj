@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\RepositoryBase\AuthenticationBase\AuthenticationBase.csproj" />
     <ProjectReference Include="..\..\TextService\TextService.Client\TextService.Client.csproj" />
     <ProjectReference Include="..\FindService.Services\FindService.Services.csproj" />
   </ItemGroup>

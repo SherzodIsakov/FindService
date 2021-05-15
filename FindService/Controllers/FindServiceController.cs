@@ -1,4 +1,5 @@
 ﻿using FindService.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -10,6 +11,7 @@ using TextService.Entities.Models;
 
 namespace FindService.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class FindServiceController : ControllerBase
