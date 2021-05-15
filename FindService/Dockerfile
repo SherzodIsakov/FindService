@@ -10,6 +10,7 @@ WORKDIR /src
 COPY ["FindService/FindService.csproj", "FindService/"]
 COPY ["FindService.Services/FindService.Services.csproj", "FindService.Services/"]
 COPY ["../TextService/TextService.Client/TextService.Client.csproj", "../TextService/TextService.Client/"]
+COPY ["../AuthenticationBase/AuthenticationBase/AuthenticationBase.csproj", "../AuthenticationBase/AuthenticationBase/"]
 RUN dotnet restore "FindService/FindService.csproj"
 COPY . .
 WORKDIR "/src/FindService"
