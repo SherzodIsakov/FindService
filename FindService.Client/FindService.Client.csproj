@@ -15,4 +15,13 @@
     <ProjectReference Include="..\..\TextService\TextService.Entities\TextService.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="AuthenticationService.Entities">
+      <HintPath>..\..\AuthenticationService\AuthenticationService.Entities\bin\Debug\net5.0\ref\AuthenticationService.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="AuthenticationService.Services">
+      <HintPath>..\..\AuthenticationService\AuthenticationService.Services\bin\Debug\net5.0\ref\AuthenticationService.Services.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
