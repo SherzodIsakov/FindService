@@ -1,11 +1,16 @@
+using AuthenticationBase;
 using AuthenticationBase.Extensions;
 using FindService.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using System.Threading.Tasks;
+using TextService.Client;
 using TextService.Client.Configuration;
 
 namespace FindService
@@ -14,21 +19,20 @@ namespace FindService
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            Configuration = configuration;           
         }
 
         public IConfiguration Configuration { get; }
+      
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAppAuthentication(Configuration);
             services.AddControllers();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "FindService", Version = "v1" }); });
 
-            services.AddTextServiceClient(Configuration);
-            services.AddTransient<IFindService, FindService.Services.Services.FindService>();
-
-          
+            services.AddAppAuthentication(Configuration);
+            services.AddTextServiceTokenClient(Configuration);
+            services.AddTransient<IFindService, FindService.Services.Services.FindService>();          
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -14,7 +14,7 @@ namespace FindService.Client
         /// <param name="word"></param>
         /// <returns></returns>
         [Get("/api/findservice/{word}")]
-        Task<IEnumerable<TextModel>> FindWord(string word);
+        Task<IEnumerable<TextModel>> FindWord(string word); //, [Header("Authorization")] string token
 
         /// <summary>
         /// Поиск слов в указанном тексте

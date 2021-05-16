@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\TextService\TextService.Client\TextService.Client.csproj" />
     <ProjectReference Include="..\..\TextService\TextService.Entities\TextService.Entities.csproj" />
   </ItemGroup>
 

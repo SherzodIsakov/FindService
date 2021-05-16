@@ -32,6 +32,7 @@ namespace FindService.Controllers
         {
             if (word != null)
             {
+                var token = Request.Headers["Authorization"];
                 var getText = await _findService.FindWordAsync(word);
                 if (getText != null)
                 {
@@ -48,6 +49,7 @@ namespace FindService.Controllers
         {
             if (words != null)
             {
+                var token = Request.Headers["Authorization"];
                 var getText = await _findService.FindWordsAsync(id, words);
                 return getText;
             }
@@ -55,18 +57,19 @@ namespace FindService.Controllers
             return null;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IEnumerable<TextModel>> GetAllTexts()
         {
             try
             {
-                var getText = await _findService.GetAllFilesAsync();
+                var token = Request.Headers["Authorization"];
+                var getText = await _findService.GetAllFilesAsync(); //token
                 return getText;
             }
 
             catch (Exception ex)
             {
-
                 throw;
             }
         }

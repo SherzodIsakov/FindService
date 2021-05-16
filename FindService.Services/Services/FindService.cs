@@ -14,6 +14,7 @@ namespace FindService.Services.Services
         public FindService(ITextClient textClient)
         {
             _textClient = textClient;
+
         }       
         public async Task<IEnumerable<TextModel>> FindWordAsync(string word)
         {
@@ -44,11 +45,11 @@ namespace FindService.Services.Services
 
             return null;
         }
-        public async Task<IEnumerable<TextModel>> GetAllFilesAsync()
+        public async Task<IEnumerable<TextModel>> GetAllFilesAsync() //string token
         {
             try
             {
-                var getText = await _textClient.GetAllTexts();
+                var getText = await _textClient.GetAllTexts();/*token*/
                 return getText;
             }           
 
