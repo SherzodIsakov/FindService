@@ -32,7 +32,7 @@ namespace FindService.Controllers
         {
             if (word != null)
             {
-                var token = Request.Headers["Authorization"];
+                //var token = Request.Headers["Authorization"];
                 var getText = await _findService.FindWordAsync(word);
                 if (getText != null)
                 {
@@ -49,7 +49,6 @@ namespace FindService.Controllers
         {
             if (words != null)
             {
-                var token = Request.Headers["Authorization"];
                 var getText = await _findService.FindWordsAsync(id, words);
                 return getText;
             }
@@ -63,8 +62,7 @@ namespace FindService.Controllers
         {
             try
             {
-                var token = Request.Headers["Authorization"];
-                var getText = await _findService.GetAllFilesAsync(); //token
+                var getText = await _findService.GetAllFilesAsync(); 
                 return getText;
             }
 
