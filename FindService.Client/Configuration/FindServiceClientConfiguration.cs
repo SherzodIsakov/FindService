@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Refit;
 using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace FindService.Client.Configuration
 {
@@ -16,7 +17,7 @@ namespace FindService.Client.Configuration
                 new HttpClient(
                 new HttpClientHandler { ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true })
                 {
-                    BaseAddress = new Uri(configuration["ServiceUrls:FindService"]),
+                    BaseAddress = new Uri(configuration["ServiceUrls:FindService"])
                 }));
 
             return services;
@@ -34,15 +35,15 @@ namespace FindService.Client.Configuration
             return services;
         }
 
-        //public static IServiceCollection AddFindServiceGetTokenClient(this IServiceCollection services, IConfiguration configuration)
-        //{
-        //    var refitSettings = new RefitSettings
-        //    {
-        //        AuthorizationHeaderValueGetter = () => new AuthService().GetToken(new LoginModel { Username = "QWE", Password = "QweAsd123!" })
-        //    };
-        //    services.AddApiClient<IFindClient>(configuration, refitSettings, "ServiceUrls:FindService");
+        public static IServiceCollection AddFindServiceGetTokenClient(this IServiceCollection services, IConfiguration configuration)
+        {
+            var refitSettings = new RefitSettings
+            {
+                AuthorizationHeaderValueGetter = () => Task.FromResult(configuration["Token"])
+            };
+            services.AddApiClient<IFindClient>(configuration, refitSettings, "ServiceUrls:FindService");
 
-        //    return services;
-        //}
+            return services;
+        }
     }
 }

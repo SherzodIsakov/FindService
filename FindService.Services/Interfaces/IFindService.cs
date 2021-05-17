@@ -26,6 +26,6 @@ namespace FindService.Services.Interfaces
         /// Получаем все файлы
         /// </summary>
         /// <returns></returns>
-        Task<IEnumerable<TextModel>> GetAllFilesAsync(); //string token
+        Task<IEnumerable<TextModel>> GetAllFilesAsync();
     }
 }

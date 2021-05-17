@@ -45,11 +45,11 @@ namespace FindService.Services.Services
 
             return null;
         }
-        public async Task<IEnumerable<TextModel>> GetAllFilesAsync() //string token
+        public async Task<IEnumerable<TextModel>> GetAllFilesAsync() 
         {
             try
             {
-                var getText = await _textClient.GetAllTexts();/*token*/
+                var getText = await _textClient.GetAllTexts();
                 return getText;
             }           
 
