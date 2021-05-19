@@ -7,13 +7,18 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["FindService/FindService.csproj", "FindService/"]
-COPY ["FindService.Services/FindService.Services.csproj", "FindService.Services/"]
-COPY ["../TextService/TextService.Client/TextService.Client.csproj", "../TextService/TextService.Client/"]
-COPY ["../AuthenticationBase/AuthenticationBase/AuthenticationBase.csproj", "../AuthenticationBase/AuthenticationBase/"]
-RUN dotnet restore "FindService/FindService.csproj"
-COPY . .
-WORKDIR "/src/FindService"
+COPY ./FindService ./FindService
+COPY ./AuthenticationBase ./AuthenticationBase
+COPY ./RepositoryBase ./RepositoryBase
+COPY ./TextService/TextService.Repositories ./TextService/TextService.Repositories
+COPY ./TextService/TextService.Services ./TextService/TextService.Services
+COPY ./TextService/TextService.Entities ./TextService/TextService.Entities
+COPY ./TextService/TextService.Client ./TextService/TextService.Client
+
+
+WORKDIR ./FindService/FindService
+
+RUN dotnet restore "FindService.csproj"
 RUN dotnet build "FindService.csproj" -c Release -o /app/build
 
 FROM build AS publish
